@@ -12,6 +12,7 @@ parse_args $@
 # Don't set -u until after the above arg parsing is complete
 set -u
 
+
 # Copy the version specific files to nodejs directory
 shopt -s dotglob
 for dir in configuration etc; do

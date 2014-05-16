@@ -11,7 +11,7 @@ case "$1" in
 esac
 
 ## npm link
-#link_global_modules $version
+link_global_modules $version
 
 # npm keeps per-user config in ~/.npmrc and cache in ~/.npm/  and
 # node-gyp (add-on build tool) uses ~/.node-gyp

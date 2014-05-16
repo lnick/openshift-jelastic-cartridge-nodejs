@@ -10,6 +10,7 @@ License: MIT License
 License-Url: https://raw.github.com/joyent/node/v0.10/LICENSE
 Vendor: www.nodejs.org
 Website: http://www.nodejs.org/
+Source-Url: https://github.com/ihorman/openshift-jelastic-cartridge-nodejs.git
 Cartridge-Version: 0.0.13
 Compatible-Versions:
 - 0.0.12

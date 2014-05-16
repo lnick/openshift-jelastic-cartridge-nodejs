@@ -160,7 +160,7 @@ function force_clean_build_enabled_for_latest_deployment(){
 
 function build() {
     echo "Building NodeJS cartridge"
-    node_modules_dir="${OPENSHIFT_REPO_DIR}node_modules/"
+    node_modules_dir="${OPENSHIFT_REPO_DIR}/ROOT/node_modules/"
     saved_modules_dir="${OPENSHIFT_NODEJS_DIR}/tmp/saved.node_modules"
 
     # Ensure that we have the node_modules directory.

@@ -33,10 +33,10 @@ function start() {
   #  Ensure we have script file.
   node_app=${node_app:-"server.js"}
 
-  pushd "$OPENSHIFT_REPO_DIR" > /dev/null
+  pushd "$OPENSHIFT_REPO_DIR/ROOT" > /dev/null
   {
       echo "`date +"$FMT"`: Starting application '$OPENSHIFT_APP_NAME' ..."
-      if [ ! -f "$OPENSHIFT_REPO_DIR/package.json" ]; then
+      if [ ! -f "$OPENSHIFT_REPO_DIR/ROOT/package.json" ]; then
           echo "    Script       = $node_app"
           echo "    Script Args  = $node_app_args"
           echo "    Node Options = $node_opts"
@@ -44,7 +44,7 @@ function start() {
   } >> $logf
 
 
-  if [ -f "${OPENSHIFT_REPO_DIR}package.json" ]; then
+  if [ -f "${OPENSHIFT_REPO_DIR}/ROOT/package.json" ]; then
       supervisor_opts="$(get_main_script_from_package_json)"
       node_cmd="npm start -d"
   else
@@ -154,6 +154,10 @@ function restart() {
     start
 }
 
+function force_clean_build_enabled_for_latest_deployment(){
+    return 0
+}
+
 function build() {
     echo "Building NodeJS cartridge"
     node_modules_dir="${OPENSHIFT_REPO_DIR}node_modules/"
@@ -212,8 +216,8 @@ function build() {
     unset GIT_WORK_TREE
 
     nodejs_context /bin/bash
-    if [ -f "${OPENSHIFT_REPO_DIR}"/package.json ]; then
-        (cd "${OPENSHIFT_REPO_DIR}"; nodejs_context "npm install -d")
+    if [ -f "${OPENSHIFT_REPO_DIR}"/ROOT/package.json ]; then
+        (cd "${OPENSHIFT_REPO_DIR}/ROOT"; nodejs_context "npm install -d")
     fi
 }
 

@@ -278,6 +278,7 @@ case "$1" in
     graceful-stop|stop)  stop        ;;
     status)              status      ;;
     build)               build       ;;
+    deploy)              restart     ;;
     post-deploy)         post-deploy ;;
     tidy)                tidy        ;;
     pre-repo-archive)    pre-repo-archive ;;

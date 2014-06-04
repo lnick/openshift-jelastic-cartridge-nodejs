@@ -33,6 +33,7 @@ function start() {
   #  Ensure we have script file.
   node_app=${node_app:-"server.js"}
 
+
   pushd "$OPENSHIFT_REPO_DIR/ROOT" > /dev/null
   {
       echo "`date +"$FMT"`: Starting application '$OPENSHIFT_APP_NAME' ..."

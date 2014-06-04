@@ -221,15 +221,30 @@ function is_node_module_installed() {
 function get_main_script_from_package_json() {
     nodejs_context "node" <<NODE_EOF
 try {
+  var fs = require('fs');
   var zmain = require('$OPENSHIFT_REPO_DIR/ROOT/package.json').main;
   if (typeof zmain === 'undefined') {
-    console.log('server.js');
+    fs.exists('$OPENSHIFT_REPO_DIR/ROOT/index.js', function(exists) {
+      if (exists) {
+         console.log('indext.js');
+       }
+       else {
+                 console.log('server.js');
+            }
+    });
   }
   else {
     console.log(zmain);
   }
 } catch(ex) {
-  console.log('server.js');
+  fs.exists('/opt/repo/ROOT/index.js', function(exists) {
+      if (exists) {
+         console.log('index.js');
+       }
+       else {
+                 console.log('server.js');
+            }
+    });
 }
 NODE_EOF
 

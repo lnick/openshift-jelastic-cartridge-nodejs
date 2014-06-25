@@ -80,7 +80,7 @@ function start() {
 
   # ensure file is created before printing it to show startup status
   sleep 2
-  cat $logf
+  tail -n 15 $logf
 
   popd > /dev/null
   if [ -n "${cart_pid}" ]; then

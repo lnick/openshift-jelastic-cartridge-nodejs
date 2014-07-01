@@ -7,5 +7,5 @@ function _setContext(){
 }
 
 
-include php-common-deploy;  # functionality which is already implemented for PHP works for Python applications as well
+include php-common-deploy;  # functionality which is already implemented for PHP reused for NodeJS applications as well
 

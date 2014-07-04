@@ -226,7 +226,7 @@ try {
   if (typeof zmain === 'undefined') {
     fs.exists('$OPENSHIFT_REPO_DIR/ROOT/index.js', function(exists) {
       if (exists) {
-         console.log('indext.js');
+         console.log('index.js');
        }
        else {
                  console.log('server.js');

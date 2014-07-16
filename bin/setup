@@ -15,8 +15,8 @@ set -u
 GLOB_ENV="/etc/jelastic/environment"
 PROFILE="${OPENSHIFT_NODEJS_DIR}/.profile"
 export PATH="${OPENSHIFT_NODEJS_DIR}/ROOT/node_modules/.bin:$PATH"
-echo $PATH >> $GLOB_ENV
-echo $PATH >> $PROFILE
+echo "export PATH=$PATH" >> $GLOB_ENV
+echo "export PATH=$PATH" >> $PROFILE
 
 # Copy the version specific files to nodejs directory
 shopt -s dotglob

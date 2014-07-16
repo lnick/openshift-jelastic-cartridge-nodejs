@@ -12,6 +12,11 @@ parse_args $@
 # Don't set -u until after the above arg parsing is complete
 set -u
 
+GLOB_ENV="/etc/jelastic/environment"
+PROFILE="${OPENSHIFT_NODEJS_DIR}/.profile"
+export PATH="${OPENSHIFT_NODEJS_DIR}/ROOT/node_modules/.bin:$PATH"
+echo $PATH >> $GLOB_ENV
+echo $PATH >> $PROFILE
 
 # Copy the version specific files to nodejs directory
 shopt -s dotglob

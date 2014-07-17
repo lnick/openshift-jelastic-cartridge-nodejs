@@ -8,6 +8,10 @@ source "${OPENSHIFT_NODEJS_DIR}/lib/nodejs_context"
 STOPTIMEOUT=10
 FMT="%a %b %d %Y %H:%M:%S GMT%z (%Z)"
 
+PROFILE="${OPENSHIFT_NODEJS_DIR}/.profile"
+export PATH="${OPENSHIFT_NODEJS_DIR}/ROOT/node_modules/.bin:$PATH"
+(grep -q "ROOT/node_modules/.bin" $PROFILE  || echo "export PATH=$PATH" >> $PROFILE)
+
 function status() {
   if is_cartridge_running; then
     client_result "Application is running"
